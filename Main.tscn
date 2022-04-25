@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Material Duck Hunt/cenariotras.png" type="Texture" id=1]
+[ext_resource path="res://Material Duck Hunt/cenariofrente.png" type="Texture" id=2]
+[ext_resource path="res://Duck.tscn" type="PackedScene" id=3]
+
+[node name="Main" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+z_index = -3
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Sprite2" type="Sprite" parent="."]
+z_index = 1
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Duck" parent="." instance=ExtResource( 3 )]
+position = Vector2( 320, 610 )
