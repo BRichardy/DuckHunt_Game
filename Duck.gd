@@ -7,7 +7,7 @@ var fall = 1
 
 func _ready():
 	randomize()
-	$moviment.wait_time = rand_range(0.4, 2)
+	$moviment.wait_time = rand_range(0.6, 2)
 	$anima.wait_time = rand_range(0.6, 1)
 
 func _process(delta):
@@ -42,6 +42,6 @@ func mata():
 
 
 func _on_death_timeout():
-	$AnimatedSprite.animation = "morte"
+	$AnimatedSprite.animation = "death"
 	fall = -1
 	side = 0

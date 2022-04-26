@@ -25,14 +25,14 @@ animations = [ {
 "name": "side",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 1 ) ],
-"loop": true,
-"name": "death",
-"speed": 7.0
-}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "scare",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "death",
 "speed": 7.0
 } ]
 
@@ -44,7 +44,9 @@ script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "top"
+animation = "side"
+frame = 1
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
