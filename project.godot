@@ -23,6 +23,7 @@ window/size/resizable=false
 [global]
 
 input=false
+save=false
 
 [input]
 

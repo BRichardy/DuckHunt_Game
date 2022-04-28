@@ -6,6 +6,7 @@ var speed = 100
 var fall = 1
 
 func _ready():
+	$quack.wait_time = rand_range(0.8,2)
 	randomize()
 	$moviment.wait_time = rand_range(0.6, 2)
 	$anima.wait_time = rand_range(0.6, 1)
@@ -42,6 +43,11 @@ func mata():
 
 
 func _on_death_timeout():
+	$quack.stop()
 	$AnimatedSprite.animation = "death"
 	fall = -1
 	side = 0
+
+
+func _on_quack_timeout():
+	$audio.play()

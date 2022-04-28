@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Material Duck Hunt/cenariotras.png" type="Texture" id=1]
 [ext_resource path="res://Material Duck Hunt/cenariofrente.png" type="Texture" id=2]
@@ -9,6 +9,13 @@
 [ext_resource path="res://topo.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Material Duck Hunt/cao/captura.png" type="Texture" id=8]
 [ext_resource path="res://Material Duck Hunt/cao/rindo.png" type="Texture" id=9]
+[ext_resource path="res://Material Duck Hunt/PressStart2P.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Material Duck Hunt/hud.png" type="Texture" id=11]
+[ext_resource path="res://Material Duck Hunt/sons/flyaway.wav" type="AudioStream" id=12]
+[ext_resource path="res://Material Duck Hunt/sons/round.wav" type="AudioStream" id=13]
+[ext_resource path="res://Material Duck Hunt/sons/cao_rindo.wav" type="AudioStream" id=14]
+[ext_resource path="res://Material Duck Hunt/sons/colidiu.wav" type="AudioStream" id=15]
+[ext_resource path="res://Material Duck Hunt/sons/cao_captura.wav" type="AudioStream" id=16]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -69,6 +76,9 @@ tracks/0/keys = {
 "values": [ Vector2( 380, 552 ), Vector2( 380, 425 ), Vector2( 380, 553 ) ]
 }
 
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 10 )
+
 [node name="Main" type="Node2D"]
 script = ExtResource( 4 )
 
@@ -95,10 +105,10 @@ wait_time = 4.0
 one_shot = true
 
 [node name="topo" parent="." instance=ExtResource( 7 )]
-position = Vector2( 384.32, -80 )
+position = Vector2( 383, -69 )
 
 [node name="chao" parent="." instance=ExtResource( 6 )]
-position = Vector2( 384, 799 )
+position = Vector2( 384, 811 )
 
 [node name="captura" type="Sprite" parent="."]
 position = Vector2( 381, 552 )
@@ -112,6 +122,37 @@ texture = ExtResource( 9 )
 anims/RESET = SubResource( 1 )
 anims/captura = SubResource( 2 )
 anims/rindo = SubResource( 3 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Sprite" type="Sprite" parent="HUD"]
+position = Vector2( 384, 627 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="HUD"]
+margin_left = 349.0
+margin_top = 608.0
+margin_right = 420.0
+margin_bottom = 647.0
+custom_fonts/font = SubResource( 4 )
+text = "OOO"
+align = 1
+valign = 1
+
+[node name="cao_captura" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 16 )
+
+[node name="cao_rindo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 14 )
+
+[node name="colidiu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 15 )
+
+[node name="flyaway" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+
+[node name="novo_turno" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )
 
 [connection signal="timeout" from="gerapato" to="." method="_on_gerapato_timeout"]
 [connection signal="timeout" from="espera" to="." method="_on_espera_timeout"]
